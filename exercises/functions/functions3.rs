@@ -1,10 +1,10 @@
 // functions3.rs
 // Execute `rustlings hint functions3` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
+// 그냥 인자가 없어서 안됨. 별거 없긴해~
 
 fn main() {
-    call_me();
+    call_me(3);
 }
 
 fn call_me(num: u32) {

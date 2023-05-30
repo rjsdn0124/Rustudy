@@ -2,7 +2,8 @@
 // Fill in the rest of the line that has code missing!
 // No hints, there's no tricks, just get used to typing these :)
 
-// I AM NOT DONE
+// 지금생각난건데 if문의 조건은 괄호 없이 써야합니당~
+// !도 똑같이 쓸 수가 있네용~
 
 fn main() {
     // Booleans (`bool`)
@@ -12,7 +13,7 @@ fn main() {
         println!("Good morning!");
     }
 
-    let // Finish the rest of this line like the example! Or make it be false!
+    let is_evening = !is_morning;// Finish the rest of this line like the example! Or make it be false!
     if is_evening {
         println!("Good evening!");
     }

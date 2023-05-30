@@ -2,7 +2,8 @@
 // Fill in the rest of the line that has code missing!
 // No hints, there's no tricks, just get used to typing these :)
 
-// I AM NOT DONE
+// Character 자료형의 변수에는 해당 변수의 값이 alphabet인지 number인지 확인할 수 있는 함수들이 이쒀요.
+// character는 '' <- 요 따옴표를 써야합니당
 
 fn main() {
     // Characters (`char`)
@@ -18,7 +19,7 @@ fn main() {
         println!("Neither alphabetic nor numeric!");
     }
 
-    let // Finish this line like the example! What's your favorite character?
+    let your_character = '1'; // Finish this line like the example! What's your favorite character?
     // Try a letter, try a number, try a special character, try a character
     // from a different language than your own, try an emoji!
     if your_character.is_alphabetic() {

@@ -3,12 +3,12 @@
 // 'use' and 'as' keywords. Fix these 'use' statements to make the code compile.
 // Execute `rustlings hint modules2` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
+// use를 as로 명명할 수 있고 여기에도 pub 키워드 붙여서 호출할 수 있음!
 
 mod delicious_snacks {
     // TODO: Fix these use statements
-    use self::fruits::PEAR as ???
-    use self::veggies::CUCUMBER as ???
+    pub use self::fruits::PEAR as fruit;
+    pub use self::veggies::CUCUMBER as veggie;
 
     mod fruits {
         pub const PEAR: &'static str = "Pear";

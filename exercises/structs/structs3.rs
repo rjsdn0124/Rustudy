@@ -4,7 +4,10 @@
 // Make the code compile and the tests pass!
 // Execute `rustlings hint structs3` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
+// 구조체를 클래스처럼 쓰는 법을 알려준다.
+// 일반 구조체 선언은 그냥 constructor 처럼 쓰고 impl 선언으로 함수들을 만들어준다.
+// 자기 자신의 변수들을 사용하고 싶으면 self.~~ 로 사용한다잉~
+// 완전 클래스자낭~
 
 #[derive(Debug)]
 struct Package {
@@ -26,12 +29,14 @@ impl Package {
         }
     }
 
-    fn is_international(&self) -> ??? {
+    fn is_international(&self) -> bool {
         // Something goes here...
+        self.sender_country != self.recipient_country
     }
 
-    fn get_fees(&self, cents_per_gram: i32) -> ??? {
+    fn get_fees(&self, cents_per_gram: i32) -> i32 {
         // Something goes here...
+        self.weight_in_grams * cents_per_gram
     }
 }
 

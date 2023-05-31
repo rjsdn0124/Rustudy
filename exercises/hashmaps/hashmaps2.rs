@@ -13,7 +13,8 @@
 //
 // Execute `rustlings hint hashmaps2` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
+// 제너릭 타입 초기화할 수 있넹ㅎ ::<>::new()로 할 수 있대용~
+// hashmap 여러 함수들을 알아보았음니다.
 
 use std::collections::HashMap;
 
@@ -39,6 +40,15 @@ fn fruit_basket(basket: &mut HashMap<Fruit, u32>) {
         // TODO: Insert new fruits if they are not already present in the basket.
         // Note that you are not allowed to put any type of fruit that's already
         // present!
+        // if 문으로 fruit가 없으면 1개 넣어주는 문장. 이 방법도 가능함!
+        // get은 참조값으로 들어가야함!
+        // insert할때는 참조 말고 그대로 들어감! 만약 fruit다시 쓰고 싶다면 copy하자!
+        // if basket.get(&fruit)==None {basket.insert(fruit,1);}
+
+        // hashmap의 함수를 써서 구현!
+        // entry 함수로 들어있는지 확인하고 or_insert로 없다면 값을 넣어주는 작업을 구현!
+        // fruit가 move되니 fruit를 재사용하고 싶다면 copy를 사용하자!
+        basket.entry(fruit).or_insert(1);
     }
 }
 

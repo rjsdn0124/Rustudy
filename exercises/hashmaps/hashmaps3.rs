@@ -14,7 +14,8 @@
 
 // Execute `rustlings hint hashmaps3` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
+// or_insert의 반환값을 깨달았다! 다시 해당 value의 객체를 반환한다! 참조값을 반환함~
+// entry도 true로 찾게된다면 value 객체를 반환한다!
 
 use std::collections::HashMap;
 
@@ -40,6 +41,12 @@ fn build_scores_table(results: String) -> HashMap<String, Team> {
         // will be the number of goals conceded from team_2, and similarly
         // goals scored by team_2 will be the number of goals conceded by
         // team_1.
+        let t1 = scores.entry(team_1_name.clone()).or_insert(Team{name:team_1_name,goals_scored:0,goals_conceded:0});
+        t1.goals_scored += team_1_score;
+        t1.goals_conceded += team_2_score;
+        let t2 = scores.entry(team_2_name.clone()).or_insert(Team{name:team_2_name,goals_scored:0,goals_conceded:0});
+        t2.goals_scored += team_2_score;
+        t2.goals_conceded += team_1_score;
     }
     scores
 }

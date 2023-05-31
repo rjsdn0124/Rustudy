@@ -10,18 +10,21 @@
 //
 // Execute `rustlings hint hashmaps1` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
+// Hash map을 사용해봤읍니다. 초기화할때 제너릭 타입을 명시해주지 않넹?
+// Hash map은 key랑 value로 이루어져있음니다.
 
 use std::collections::HashMap;
 
 fn fruit_basket() -> HashMap<String, u32> {
-    let mut basket = // TODO: declare your hash map here.
+    let mut basket = HashMap::new();// TODO: declare your hash map here.
 
     // Two bananas are already given for you :)
     basket.insert(String::from("banana"), 2);
 
     // TODO: Put more fruits in your basket here.
 
+    basket.insert(String::from("apple"),1);
+    basket.insert(String::from("mangogo"),4);
     basket
 }
 

@@ -14,18 +14,33 @@
 
 // Execute `rustlings hint quiz3` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
+// std::fmt::Display를 안하면 format 함수 내에서 제너릭을 사용하지 못함!
+// 확실한거는 제너릭의 T는 따로 선언을 안해주면 변수 값을 초기화한데서 자동으로 가져오는 거 같아..
+// 그리고 impl하면서 제너릭 전달은 객체 전체 스코프에서 돌아가서 객체<T>를 해줘야하는듯!
+// impl에서는 해당 선언에서 쓸 모든 제너릭을 다 받아서 저장하는듯! 뿜빠이빠이야!
 
-pub struct ReportCard {
-    pub grade: f32,
+pub struct ReportCard<T> {
+    pub grade: T,
     pub student_name: String,
     pub student_age: u8,
 }
 
-impl ReportCard {
-    pub fn print(&self) -> String {
+impl<T: std::fmt::Display> ReportCard<T> {
+    pub fn print(& self) -> String {
         format!("{} ({}) - achieved a grade of {}",
             &self.student_name, &self.student_age, &self.grade)
+    }
+}
+trait UpdateGrade<T>{
+    fn update_grade(self, grade:T) -> ReportCard<T>;
+}
+impl<T1,T2> UpdateGrade<T2> for ReportCard<T1>{
+    fn update_grade(self, grade:T2) -> ReportCard<T2> {
+        ReportCard{
+            grade: grade,
+            student_name:self.student_name,
+            student_age:self.student_age,
+        }
     }
 }
 
@@ -54,6 +69,7 @@ mod tests {
             student_name: "Gary Plotter".to_string(),
             student_age: 11,
         };
+        let report_card = report_card.update_grade("A+".to_string());
         assert_eq!(
             report_card.print(),
             "Gary Plotter (11) - achieved a grade of A+"

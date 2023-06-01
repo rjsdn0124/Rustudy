@@ -5,6 +5,7 @@
 // Execute `rustlings hint errors3` or use the `hint` watch subcommand for a hint.
 
 // main에서는 result를 return하지 못한대요!!! 그래서 result를 반환해줘야함!
+// ㄴ이게 아니라 ?를 쓰면 바로 return해버리니까 ?를 쓰려면 result 반환으로 바꿔줘야하는거!!
 // 근데 OK를 반환해야하니까 Ok(())로 비워서 반환해주면 됨!
 
 use std::num::ParseIntError;

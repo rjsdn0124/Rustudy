@@ -9,7 +9,8 @@
 // implementing this trait.
 // Execute `rustlings hint traits1` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
+// trait을 정의하면 약간 인터페이스 느낌으로 어떤 struct 같은 거에 해당 함수를 추가할 수 있다.
+// trait 키워드를 쓰는구만!
 
 trait AppendBar {
     fn append_bar(self) -> Self;
@@ -17,6 +18,11 @@ trait AppendBar {
 
 impl AppendBar for String {
     // TODO: Implement `AppendBar` for type `String`.
+    fn append_bar(self) -> Self{
+        // String은 참조값이 아니라 그대로 들어간다잉.
+        // 이렇게 하면 새로 객체가 생기는게 아니라, self.Add 함수를 호출한거니 add함수도 self를 반환하니까 괜찮네!
+        self + "Bar"
+    }
 }
 
 fn main() {

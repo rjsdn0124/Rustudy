@@ -17,16 +17,17 @@
 // one is a lot shorter!
 // Execute `rustlings hint errors2` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
+// ?넣으면 함수가 실행되고 error를 뱉으면 바로 return해준다! err를 리턴! 
+// 만약 함수가 잘 실행이 되었다면 그냥 밑에 줄을 실행한답.
 
 use std::num::ParseIntError;
 
 pub fn total_cost(item_quantity: &str) -> Result<i32, ParseIntError> {
     let processing_fee = 1;
     let cost_per_item = 5;
-    let qty = item_quantity.parse::<i32>();
-
+    let qty = item_quantity.parse::<i32>()?;
     Ok(qty * cost_per_item + processing_fee)
+
 }
 
 #[cfg(test)]

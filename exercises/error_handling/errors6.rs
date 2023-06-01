@@ -8,7 +8,10 @@
 
 // Execute `rustlings hint errors6` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
+// map_err를 해주면 결과가 정상이면 Ok를 그대로, 앞선 함수가 에러를 반환하면 errror를 새롭게 매핑해서 뱉어낸다!
+// '?' expression은 option 자료형을 unwrap해준다! 여기서 이슈가 생길 수 이써요라고 전달하기 위해 쓰는게 아니라,
+// Ok나 다른 option이면 unwrap, err를 반환ㄴ하면 그냥 그대로 err를 뱉어내게 해준다! none이어도 그대로 None을 뱉어낸다!
+// 뒤에 문장이 실행을 안시키고 err, None일 경우에 바로 그냥 반환해버린다! return 느낌~!
 
 use std::num::ParseIntError;
 
@@ -24,13 +27,15 @@ impl ParsePosNonzeroError {
         ParsePosNonzeroError::Creation(err)
     }
     // TODO: add another error conversion function here.
-    // fn from_parseint...
+    fn from_parseint(err: ParseIntError) -> ParsePosNonzeroError {
+        ParsePosNonzeroError::ParseInt(err)
+    }
 }
 
 fn parse_pos_nonzero(s: &str) -> Result<PositiveNonzeroInteger, ParsePosNonzeroError> {
     // TODO: change this to return an appropriate error instead of panicking
     // when `parse()` returns an error.
-    let x: i64 = s.parse().unwrap();
+    let x: i64 = s.parse().map_err(ParsePosNonzeroError::from_parseint)?;
     PositiveNonzeroInteger::new(x).map_err(ParsePosNonzeroError::from_creation)
 }
 

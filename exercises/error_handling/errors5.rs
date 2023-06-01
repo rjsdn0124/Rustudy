@@ -16,14 +16,16 @@
 
 // Execute `rustlings hint errors5` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
+// 여기서 쓰는 match가 그래도 보편적으로 쓰이는 방법이겠ㅆ지? 저렇게도 써보자!
+// Box 쓰는 법이라는데 모르겠다. error를 custom errror로도 사용할 수 있도록 하는거 같다!
+// 근데 description이 실행이 잘 안된다. 한번 나중에 확인해보자!
 
 use std::error;
 use std::fmt;
 use std::num::ParseIntError;
 
 // TODO: update the return type of `main()` to make this compile.
-fn main() -> Result<(), Box<dyn ???>> {
+fn main() -> Result<(), Box<dyn error::Error>> {
     let pretend_user_input = "42";
     let x: i64 = pretend_user_input.parse()?;
     println!("output={:?}", PositiveNonzeroInteger::new(x)?);

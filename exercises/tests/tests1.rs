@@ -7,12 +7,12 @@
 // pass! Make the test fail!
 // Execute `rustlings hint tests1` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
+// 간단한 assert 매크로 사용하기.
 
 #[cfg(test)]
 mod tests {
     #[test]
     fn you_can_assert() {
-        assert!();
+        assert!(true);
     }
 }

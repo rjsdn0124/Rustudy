@@ -5,7 +5,10 @@
 
 // Make this code compile by using the proper Rc primitives to express that the sun has multiple owners.
 
-// I AM NOT DONE
+// rc로 atomic한 arc랑 다르게 clone을 통해 해당 저장소에 여러 곳에서 한 주소로 접근할 수 있도록 하는 기능!
+// rust는 참조하지 않고 사용하면 없어지니 print 같은 경우에 없어진다.
+// 그래서 clone으로 정보들을 가져올 수 있도록 해서 사용하고 바로 버려버리는 식으로.
+// rc는 어차피 한 저장소에 저장되니! 약간 redux같은 느낌인거 같다!
 
 use std::rc::Rc;
 
@@ -55,17 +58,17 @@ fn main() {
     jupiter.details();
 
     // TODO
-    let saturn = Planet::Saturn(Rc::new(Sun {}));
+    let saturn = Planet::Saturn(Rc::clone(&sun));
     println!("reference count = {}", Rc::strong_count(&sun)); // 7 references
     saturn.details();
 
     // TODO
-    let uranus = Planet::Uranus(Rc::new(Sun {}));
+    let uranus = Planet::Uranus(Rc::clone(&sun));
     println!("reference count = {}", Rc::strong_count(&sun)); // 8 references
     uranus.details();
 
     // TODO
-    let neptune = Planet::Neptune(Rc::new(Sun {}));
+    let neptune = Planet::Neptune(Rc::clone(&sun));
     println!("reference count = {}", Rc::strong_count(&sun)); // 9 references
     neptune.details();
 
@@ -87,12 +90,15 @@ fn main() {
     println!("reference count = {}", Rc::strong_count(&sun)); // 4 references
 
     // TODO
+    drop(earth);
     println!("reference count = {}", Rc::strong_count(&sun)); // 3 references
 
     // TODO
+    drop(venus);
     println!("reference count = {}", Rc::strong_count(&sun)); // 2 references
 
     // TODO
+    drop(mercury);
     println!("reference count = {}", Rc::strong_count(&sun)); // 1 reference
 
     assert_eq!(Rc::strong_count(&sun), 1);

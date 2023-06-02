@@ -16,11 +16,12 @@
 //
 // Execute `rustlings hint box1` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
+// recursive하게 자기자신을 호출할 때 box? 얼마나 많이 힙을 할당해야하는지 모르니까 다음 칸의 정보를 box 형태로 포장..?
+// 주소값으로 하면 lifetime도 설정해줘야하고, 또 list를 static으로 선언해줘야지 객체가 안 죽으니, 박스형태로 포장하네!
 
 #[derive(PartialEq, Debug)]
 pub enum List {
-    Cons(i32, List),
+    Cons(i32, Box<List>),
     Nil,
 }
 
@@ -33,11 +34,11 @@ fn main() {
 }
 
 pub fn create_empty_list() -> List {
-    todo!()
+    List::Nil
 }
 
 pub fn create_non_empty_list() -> List {
-    todo!()
+    List::Cons(3,Box::new(List::Nil))
 }
 
 #[cfg(test)]

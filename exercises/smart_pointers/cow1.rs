@@ -8,7 +8,9 @@
 // This exercise is meant to show you what to expect when passing data to Cow.
 // Fix the unit tests by checking for Cow::Owned(_) and Cow::Borrowed(_) at the TODO markers.
 
-// I AM NOT DONE
+// 참조값으로 cow에 준다면 빌려서 온거니까 cow::borrow로 들어와서 mut로 변환이 되면 새로 주소를 할당해서 값을 만드는 거니까
+// cow로 반환하면 owned로 wrapping 해서 반환!
+// 그냥 값을 갖다 박아버리면 소유권을 넘겨준거니 cow::owned!
 
 use std::borrow::Cow;
 
@@ -44,7 +46,8 @@ mod tests {
         let slice = [0, 1, 2];
         let mut input = Cow::from(&slice[..]);
         match abs_all(&mut input) {
-            // TODO
+            Cow::Borrowed(_) => Ok(()),
+            _ => Err("Expected owned value"),
         }
     }
 
@@ -58,6 +61,8 @@ mod tests {
         let mut input = Cow::from(slice);
         match abs_all(&mut input) {
             // TODO
+            Cow::Owned(_) => Ok(()),
+            _ => Err("Expected owned value"),
         }
     }
 
@@ -70,6 +75,8 @@ mod tests {
         let mut input = Cow::from(slice);
         match abs_all(&mut input) {
             // TODO
+            Cow::Owned(_) => Ok(()),
+            _ => Err("Expected owned value"),
         }
     }
 }

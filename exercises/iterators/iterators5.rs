@@ -8,7 +8,15 @@
 // need to be modified.
 // Execute `rustlings hint iterators5` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
+// iter, into_iter, iter_mut 의 차이
+// reference : https://sftblw.tistory.com/91
+/* 
+"컬렉션에서 이터레이터를 만드는 일반적인 메소드는 3종류가 있습니다.
+
+- "iter()" 는 "&T" 를 순회합니다.
+- "iter_mut()" 는 "&mut T" 를 순회합니다.
+- "into_iter()" 는 "T" 를 순회합니다.
+*/
 
 use std::collections::HashMap;
 
@@ -32,7 +40,7 @@ fn count_for(map: &HashMap<String, Progress>, value: Progress) -> usize {
 fn count_iterator(map: &HashMap<String, Progress>, value: Progress) -> usize {
     // map is a hashmap with String keys and Progress values.
     // map = { "variables1": Complete, "from_str": None, ... }
-    todo!();
+    map.values().into_iter().filter(|v| *v == &value).count()
 }
 
 fn count_collection_for(collection: &[HashMap<String, Progress>], value: Progress) -> usize {
@@ -51,7 +59,9 @@ fn count_collection_iterator(collection: &[HashMap<String, Progress>], value: Pr
     // collection is a slice of hashmaps.
     // collection = [{ "variables1": Complete, "from_str": None, ... },
     //     { "variables2": Complete, ... }, ... ]
-    todo!();
+    let mut result = 0;
+    collection.into_iter().for_each(|map| result +=count_iterator(map,value));
+    result
 }
 
 #[cfg(test)]

@@ -6,11 +6,11 @@
 // and returns the proper type.
 // Execute `rustlings hint using_as` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
+// as를 사용햇 ㅓ형 변환을 할 수 있답니당
 
 fn average(values: &[f64]) -> f64 {
     let total = values.iter().sum::<f64>();
-    total / values.len()
+    total / values.len() as f64
 }
 
 fn main() {
